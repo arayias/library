@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="scripts/app.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper-grid">
+      <header>
+        <img
+          src="https://www.svgrepo.com/show/532906/book-open.svg"
+          alt="opened book"
+        />
+        <div class="header__title">Library</div>
+      </header>
+      <main>
+        <div class="flex-wrapper">
+          <button class="add-book-btn">+ Add Book</button>
+
+          <div class="book-grid">
+            <!-- example book -->
+            <div class="book">
+              <div class="book__title">Fall of the house of Usher</div>
+              <div class="book__author">Edgar Alan Poe</div>
+              <div class="book__pages">235</div>
+              <button class="book-btn green">Read</button>
+              <button class="book-btn red">Remove</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
