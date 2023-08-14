@@ -111,6 +111,12 @@ main {
   text-align: center;
 }
 
+.small {
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+}
+
 .book-btn {
   width: 100%;
   height: 50px;

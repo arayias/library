@@ -17,6 +17,9 @@ const states = {
   books: [
     new Book("The Hobbit", "J.R.R. Tolkien", 295, true),
     new Book("The Fellowship of the Ring", "J.R.R. Tolkien", 423, false),
+    new Book("The Two Towers", "J.R.R. Tolkien", 352, false),
+    new Book("The Return of the King", "J.R.R. Tolkien", 416, false),
+    new Book("The Silmarillion", "J.R.R. Tolkien", 365, true),
   ],
   isModalOpen: false,
 };
@@ -25,6 +28,7 @@ document.addEventListener("click", (e) => {
   if (states.isModalOpen && !modalElement.contains(e.target)) {
     states.isModalOpen = false;
     modalElement.classList.toggle("hidden");
+    form.reset();
   }
 });
 
@@ -48,6 +52,7 @@ form.addEventListener("submit", (e) => {
   renderHTML();
   states.isModalOpen = false;
   modalElement.classList.toggle("hidden");
+  form.reset();
 });
 
 const renderHTML = () => {
@@ -59,7 +64,7 @@ const renderHTML = () => {
     bookElement.innerHTML = `
               <div class="book__title">${book.title}</div>
               <div class="book__author">By ${book.author}</div>
-              <div class="book__pages">${book.pages}</div>
+              <div class="book__pages small">Pages ${book.pages}</div>
               <button book='${index}' class="book-btn ${
       book.isRead ? "green" : "yellow"
     }">
