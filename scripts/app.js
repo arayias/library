@@ -3,10 +3,16 @@ const modalElement = document.querySelector(".book-modal");
 const bookGrid = document.querySelector(".book-grid");
 const form = document.querySelector("#add-book-form");
 
+var sanitizeHTML = function (str) {
+  return str.replace(/[^\w. ]/gi, function (c) {
+    return "&#" + c.charCodeAt(0) + ";";
+  });
+};
+
 const Book = function (title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
+  this.title = sanitizeHTML(title);
+  this.author = sanitizeHTML(author);
+  this.pages = sanitizeHTML(pages + "");
   this.isRead = isRead;
   this.toggleRead = () => {
     this.isRead = !this.isRead;
@@ -90,7 +96,11 @@ const renderHTML = () => {
         e.target.innerHTML = "Read";
       } else if (e.target.classList.contains("red")) {
         states.books.splice(index, 1);
-        renderHTML();
+        e.target.parentElement.addEventListener("transitionend", () => {
+          e.target.classList.contains("disabled") ? renderHTML() : null;
+        });
+        e.target.parentElement.classList.add("shrink");
+        e.target.classList.add("disabled");
       }
     });
   });

@@ -89,10 +89,6 @@ main {
   transition: scale 0.3s ease-in-out;
 }
 
-.book:has(> .red:active) {
-  scale: 0.9;
-}
-
 .book__title {
   font-size: 1.2rem;
   font-weight: 700;
@@ -172,6 +168,10 @@ main {
 
 .hidden {
   display: none;
+}
+
+.shrink {
+  scale: 0.8;
 }
 
 .book-modal:not(.hidden) ~ * {
