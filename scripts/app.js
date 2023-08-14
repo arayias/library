@@ -42,12 +42,34 @@ const renderHTML = () => {
               <div class="book__title">${book.title}</div>
               <div class="book__author">By ${book.author}</div>
               <div class="book__pages">${book.pages}</div>
-              <button class="book-btn ${book.isRead ? "green" : "yellow"}">
+              <button book='${index}' class="book-btn ${
+      book.isRead ? "green" : "yellow"
+    }">
                 ${book.isRead ? "Read" : "Pending"}
               </button>
-              <button class="book-btn red">Remove</button>
+              <button book='${index}' class="book-btn red">Remove</button>
     `;
     bookGrid.appendChild(bookElement);
+  });
+
+  bookGrid.querySelectorAll(".book-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      index = parseInt(btn.getAttribute("book"));
+      if (e.target.classList.contains("green")) {
+        states.books[index].toggleRead();
+        e.target.classList.remove("green");
+        e.target.classList.add("yellow");
+        e.target.innerHTML = "Pending";
+      } else if (e.target.classList.contains("yellow")) {
+        states.books[index].toggleRead();
+        e.target.classList.remove("yellow");
+        e.target.classList.add("green");
+        e.target.innerHTML = "Read";
+      } else if (e.target.classList.contains("red")) {
+        states.books.splice(index, 1);
+        renderHTML();
+      }
+    });
   });
 };
 
