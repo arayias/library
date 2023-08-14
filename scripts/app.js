@@ -21,7 +21,7 @@ const states = {
 };
 
 document.addEventListener("click", (e) => {
-  if (states.isModalOpen && !e.target.classList.contains("book-modal")) {
+  if (states.isModalOpen && !modalElement.contains(e.target)) {
     states.isModalOpen = false;
     modalElement.classList.toggle("hidden");
   }

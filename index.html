@@ -18,20 +18,54 @@
       </header>
       <main>
         <div class="flex-wrapper">
-          <div class="book-modal hidden">Test! Hello</div>
+          <div class="book-modal hidden">
+            <form action="" method="" id="add-book-form">
+              <div class="form-input">
+                <label for="title">Book Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  required
+                  placeholder="To Kill A Mocking Bird"
+                />
+              </div>
+
+              <div class="form-input">
+                <label for="author">Author</label>
+                <input
+                  type="text"
+                  name="author"
+                  id="author"
+                  required
+                  placeholder="Harper Lee"
+                />
+              </div>
+
+              <div class="form-input">
+                <label for="pages">Pages</label>
+                <input
+                  type="number"
+                  name="pages"
+                  id="pages"
+                  required
+                  placeholder="281"
+                  min="0"
+                />
+              </div>
+
+              <div class="form-input">
+                <label for="read">Read</label>
+                <input type="checkbox" name="read" id="read" />
+              </div>
+
+              <button type="submit">+</button>
+            </form>
+          </div>
 
           <button class="add-book-btn">+ Add Book</button>
 
-          <div class="book-grid">
-            <!-- example book -->
-            <div class="book">
-              <div class="book__title">Fall of the house of Usher</div>
-              <div class="book__author">Edgar Alan Poe</div>
-              <div class="book__pages">235</div>
-              <button class="book-btn green">Read</button>
-              <button class="book-btn red">Remove</button>
-            </div>
-          </div>
+          <div class="book-grid"></div>
         </div>
       </main>
     </div>
