@@ -1,6 +1,7 @@
 const addBookBtn = document.querySelector(".add-book-btn");
 const modalElement = document.querySelector(".book-modal");
 const bookGrid = document.querySelector(".book-grid");
+const form = document.querySelector("#add-book-form");
 
 const Book = function (title, author, pages, isRead) {
   this.title = title;
@@ -33,7 +34,24 @@ addBookBtn.addEventListener("click", (e) => {
   modalElement.classList.toggle("hidden");
 });
 
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  states.books.push(
+    new Book(
+      data.get("title"),
+      data.get("author"),
+      data.get("pages"),
+      data.get("isRead") === "on" ? true : false
+    )
+  );
+  renderHTML();
+  states.isModalOpen = false;
+  modalElement.classList.toggle("hidden");
+});
+
 const renderHTML = () => {
+  console.log(states.books);
   bookGrid.innerHTML = "";
   states.books.forEach((book, index) => {
     const bookElement = document.createElement("div");
